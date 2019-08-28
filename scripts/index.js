@@ -29,7 +29,6 @@ const Templates = {
       </ul>
 
       <button id="reset-password" class="btn">Reset Passphrase</button>
-      <button id="open-submit-code" class="btn btn-primary">Submit Code</button>
 
       ${state.tests.map(test => `<hr />${test.instr}`).join('')}
     `;  
