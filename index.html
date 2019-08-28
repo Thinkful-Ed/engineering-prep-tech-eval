@@ -18,42 +18,8 @@
       </div>
     </div>
   </main>
-  <div id="modal" class="dialog" aria-hidden="true">
-    <div class="dialog-overlay" tabindex="-1"></div>
-    <dialog aria-labelledby="dialog-title" class="dialog-content" role="alertdialog">
-      
-      <h1 id="dialog-title">Submit your evaluation</h1>
-      <form id="submit-code-form">
-        <div class="input-group">
-          <label for="submit-code-email">Your email:</label>
-          <input type="email" name="email" id="submit-code-email" required />
-        </div>
-        <div class="input-group">
-          <label for="submit-code-script">Code from student.js:</label>
-          <textarea
-            name="code"
-            id="submit-code-script"
-            cols="50"
-            rows="10"
-            required
-          ></textarea>
-        </div>
-        <div class="button-group">
-          <button class="btn btn btn-lg cancel" type="button">Cancel</button>
-          <button class="btn btn btn-lg btn-primary submit" type="submit">Submit</button>
-        </div>
-        <div class="submit-response js-submit-response"></div>
-      </form>
-      <button
-        type="button"
-        class="btn btn-icon close"
-        data-a11y-dialog-hide="modal"
-        aria-label="Close Submit your evaluation"
-      >
-        &times;
-      </button>
-    </dialog>
-  </div>
+  
+
   <script src="vendor/jquery.min.js"></script>
   <script src="vendor/chai.min.js"></script>
   <script src="vendor/mocha.min.js"></script>

@@ -10,7 +10,6 @@ const state = {
   error: null,
   tests: [],
   changedToken: false,
-  submitCodeModal: false,
   submitResponse: {},
 };
 
@@ -77,10 +76,6 @@ const render = function() {
     return window.location = window.location.href;
   }
 
-  if (state.submitCodeModal) {
-    return $('.js-submit-response').replaceWith(Templates.submissionResponse());
-  }
-
   if (state.validToken) {
     $('.directions').html(Templates.instructions());
     state.tests.forEach(test => eval(test.script));
@@ -135,14 +130,6 @@ const setToken = function(token) {
 };
 
 const Listeners = {
-  onClickOpenModal() {
-    state.submitCodeModal = true;
-    render();
-  },
-
-  onClickCancelModal() {
-    window.location = window.location.href;
-  },
 
   onSubmitTests(e) {
     e.preventDefault();
@@ -215,28 +202,12 @@ const detectToken = function() {
 };
 
 const main = function() {
-  const el = document.getElementById('modal');
   const content = document.getElementById('main');
-  const dialog = new A11yDialog(el, main);
 
   const $directions = $('.directions');
-  const $modal = $('#modal');
-
-  dialog.on('show', function (el, ev) {
-    state.submitCodeModal = true;
-  });
-
-  dialog.on('hide', function (el, ev) {
-    state.submitCodeModal = false;
-    $directions.find('#open-submit-code').focus();
-  });
 
   $directions.on('submit', '#password-form', Listeners.onSubmitPasswordForm);
   $directions.on('click', '#reset-password', Listeners.onClickResetPassword);
-  $directions.on('click', '#open-submit-code', dialog.show.bind(dialog));
-
-  $modal.on('click', '.cancel', dialog.hide.bind(dialog));
-  $modal.on('submit', '#submit-code-form', Listeners.onSubmitTests);
 
   detectToken();
 };
